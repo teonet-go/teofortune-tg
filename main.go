@@ -9,6 +9,7 @@ package main
 
 import (
 	"flag"
+	"log"
 	"time"
 
 	"github.com/teonet-go/teonet"
@@ -22,7 +23,7 @@ const (
 )
 
 var appStartTime = time.Now()
-var token, monitor string
+var token, fortune, monitor string
 
 // Params is teonet command line parameters
 var Params struct {
@@ -49,9 +50,29 @@ func main() {
 	flag.StringVar(&Params.loglevel, "loglevel", "NONE", "log level")
 	flag.StringVar(&Params.logfilter, "logfilter", "", "log filter")
 	//
-	flag.StringVar(&monitor, "token", "", "telegram token")
+	flag.StringVar(&token, "token", "", "telegram token")
+	flag.StringVar(&fortune, "fortune", "", "fortune microservice address")
 	flag.StringVar(&monitor, "monitor", "", "monitor address")
 	//
 	flag.Parse()
 
+	// Check requered parameters
+	teonet.CheckRequeredParams("token", "fortune")
+
+	// Initialize and run Teonet
+	teo, err := newTeonet()
+	if err != nil {
+		log.Panic(err)
+		return
+	}
+
+	// Initialize telegram bot
+	bot, err := NewBot(token, teo)
+	if err != nil {
+		log.Panic(err)
+		return
+	}
+
+	// Run bot
+	bot.Run()
 }
