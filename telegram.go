@@ -100,7 +100,7 @@ func (b *Bot) Run() {
 			// Set login token
 			// case waitToken:
 			// 	continue
-			
+
 			// Text or Unknown command
 			default:
 				answer = "I don't know nothing about '" + text + "'.\n\n" +

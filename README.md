@@ -11,6 +11,10 @@ This microservice use telegram bot api. To create your telergam bot api token se
 
 There are various ways to start this Teonet microservice application:
 
+_In code blow we use preinstalled in Teonet Cloud teofortune microservice address: '-fortune=8agv3IrXQk7INHy5rVlbCxMWVmOOCoQgZBF'. 
+Change this address to your application address. Or you can use this address, but than you will connect to `teofortune` microservice application running in Teonet Cloud. The address prints after you start Teonet application in string:_  
+`Teonet address: 8agv3IrXQk7INHy5rVlbCxMWVmOOCoQgZBF`
+
 ### 1. From sources
 
 ```bash
@@ -24,6 +28,15 @@ go run . -token=your-telegram-token -fortune=8agv3IrXQk7INHy5rVlbCxMWVmOOCoQgZBF
 ```bash
 go install github.com/teonet-go/teofortune-tg .
 teofortune -token=your-telegram-token -fortune=8agv3IrXQk7INHy5rVlbCxMWVmOOCoQgZBF -loglevel=debug
+```
+
+### 3. Using docker
+
+```bash
+docker run -d -it --network=host --restart=always --name teofortune-tg -v \
+$HOME/.config/teonet/teofortune-tg:/root/.config/teonet/teofortune-tg ghcr.io/teonet-go/\
+teofortune-tg:latest teofortune-tg -token=your-telegram-token \
+-fortune=8agv3IrXQk7INHy5rVlbCxMWVmOOCoQgZBF -loglevel=debug
 ```
 
 ## How to use
