@@ -19,7 +19,7 @@ const (
 	appShort   = "teofortune-tg"
 	appName    = "Teonet fortune telegram-bot microservice application"
 	appLong    = ""
-	appVersion = "0.0.1"
+	appVersion = "0.0.3"
 )
 
 var appStartTime = time.Now()
