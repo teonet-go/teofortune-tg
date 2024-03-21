@@ -103,7 +103,7 @@ func (b *Bot) Run() {
 
 			// Text or Unknown command
 			default:
-				answer = "I don't know nothing about '" + text + "'.\n\n" +
+				answer = "I don't know anything about '" + text + "'.\n\n" +
 					"I can tell you some fortune message:\n\n"
 				msg, err := b.teo.Fortune()
 				if err != nil {
